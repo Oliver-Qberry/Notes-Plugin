@@ -1,4 +1,4 @@
-# Notes Plugin (Godot 4)
+# Notes Plugin (Godot 4.5)
 
 A simple docked notes plugin for Godot that helps you keep project notes, todos, ideas, and context directly inside the editor.
 
