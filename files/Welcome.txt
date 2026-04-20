@@ -1,0 +1,2 @@
+Welcome to the Notes plugin.
+Use these notes to track ideas, tasks, and project context in one place.

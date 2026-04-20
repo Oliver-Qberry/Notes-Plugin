@@ -1,0 +1,165 @@
+[gd_scene load_steps=3 format=3 uid="uid://3d0e8btly3q3"]
+
+[ext_resource type="Script" uid="uid://dl26swq616gvu" path="res://addons/Notes/notes_control.gd" id="1_yvax7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_side_panel"]
+bg_color = Color(0.14509805, 0.15294118, 0.16078432, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.23921569, 0.24705882, 0.25882354, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[node name="Notes" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_yvax7")
+
+[node name="MainMargin" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 6
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 6
+theme_override_constants/margin_bottom = 6
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMargin"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MainMargin/VBoxContainer"]
+layout_mode = 2
+
+[node name="OpenButton" type="Button" parent="MainMargin/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(56, 0)
+layout_mode = 2
+text = "Files"
+
+[node name="VSeparator" type="VSeparator" parent="MainMargin/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="MainMargin/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+clip_text = true
+text = "Notes plugin - ideas"
+vertical_alignment = 1
+
+[node name="DeleteCurrentButton" type="Button" parent="MainMargin/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+tooltip_text = "Delete current note"
+theme_override_colors/font_color = Color(0.95281494, 0.58383155, 0.5847179, 1)
+text = "x"
+flat = true
+
+[node name="SaveButton" type="Button" parent="MainMargin/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(56, 0)
+layout_mode = 2
+text = "Save"
+
+[node name="HSeparator" type="HSeparator" parent="MainMargin/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextEdit" type="TextEdit" parent="MainMargin/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "New note file."
+wrap_mode = 1
+
+[node name="FilePanel" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 300.0
+grow_vertical = 2
+
+[node name="ColorRect" type="PanelContainer" parent="FilePanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_side_panel")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="FilePanel/ColorRect"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="FilePanel/ColorRect/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 6
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 6
+theme_override_constants/margin_bottom = 6
+
+[node name="Header" type="HBoxContainer" parent="FilePanel/ColorRect/VBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="FilePanel/ColorRect/VBoxContainer/MarginContainer/Header"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Notes Files"
+
+[node name="CloseButton" type="Button" parent="FilePanel/ColorRect/VBoxContainer/MarginContainer/Header"]
+layout_mode = 2
+text = "Close"
+flat = true
+
+[node name="HSeparator" type="HSeparator" parent="FilePanel/ColorRect/VBoxContainer"]
+layout_mode = 2
+
+[node name="FileListScroll" type="ScrollContainer" parent="FilePanel/ColorRect/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="FileList" type="VBoxContainer" parent="FilePanel/ColorRect/VBoxContainer/FileListScroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HSeparator2" type="HSeparator" parent="FilePanel/ColorRect/VBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="FilePanel/ColorRect/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 6
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 6
+theme_override_constants/margin_bottom = 6
+
+[node name="VBoxContainer" type="VBoxContainer" parent="FilePanel/ColorRect/VBoxContainer/MarginContainer2"]
+layout_mode = 2
+
+[node name="NewFileName" type="LineEdit" parent="FilePanel/ColorRect/VBoxContainer/MarginContainer2/VBoxContainer"]
+layout_mode = 2
+placeholder_text = "New File Name"
+middle_mouse_paste_enabled = false
+
+[node name="CreateButton" type="Button" parent="FilePanel/ColorRect/VBoxContainer/MarginContainer2/VBoxContainer"]
+layout_mode = 2
+text = "Create Note"
+
+[node name="ConfirmDelete" type="ConfirmationDialog" parent="."]
+ok_button_text = "Delete"
+dialog_text = "Delete this note?"
+
+[connection signal="pressed" from="MainMargin/VBoxContainer/HBoxContainer/OpenButton" to="." method="_on_open_button_pressed"]
+[connection signal="pressed" from="MainMargin/VBoxContainer/HBoxContainer/DeleteCurrentButton" to="." method="_on_delete_current_button_pressed"]
+[connection signal="pressed" from="MainMargin/VBoxContainer/HBoxContainer/SaveButton" to="." method="_on_save_button_pressed"]
+[connection signal="pressed" from="FilePanel/ColorRect/VBoxContainer/MarginContainer/Header/CloseButton" to="." method="_on_close_button_pressed"]
+[connection signal="text_submitted" from="FilePanel/ColorRect/VBoxContainer/MarginContainer2/VBoxContainer/NewFileName" to="." method="_on_new_file_name_text_submitted"]
+[connection signal="pressed" from="FilePanel/ColorRect/VBoxContainer/MarginContainer2/VBoxContainer/CreateButton" to="." method="_on_create_button_pressed"]
+[connection signal="confirmed" from="ConfirmDelete" to="." method="_on_confirm_delete_confirmed"]
