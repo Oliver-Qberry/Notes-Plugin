@@ -1,20 +1,22 @@
-[gd_scene load_steps=3 format=3 uid="uid://3d0e8btly3q3"]
+[gd_scene format=3 uid="uid://3d0e8btly3q3"]
 
-[ext_resource type="Script" uid="uid://dl26swq616gvu" path="res://addons/Notes/notes_control.gd" id="1_yvax7"]
+[ext_resource type="Script" uid="uid://dl26swq616gvu" path="res://addons/Notes/notes.gd" id="1_yvax7"]
+[ext_resource type="Texture2D" uid="uid://fn8n76xkxxn7" path="res://addons/Notes/icons/delete_icon.svg" id="2_ojsh0"]
+[ext_resource type="Texture2D" uid="uid://bpriikhq8xgs3" path="res://addons/Notes/icons/menu_icon.svg" id="2_xf4qy"]
+[ext_resource type="Texture2D" uid="uid://3fcmdmxvd7uw" path="res://addons/Notes/icons/close_icon.svg" id="4_g0u4j"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_side_panel"]
 bg_color = Color(0.14509805, 0.15294118, 0.16078432, 1)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color(0.23921569, 0.24705882, 0.25882354, 1)
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.49379992, 0.5121032, 0.53042054, 1)
 corner_radius_top_left = 3
 corner_radius_top_right = 3
 corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 
-[node name="Notes" type="Control"]
+[node name="Notes" type="Control" unique_id=1809965321]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -23,7 +25,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_yvax7")
 
-[node name="MainMargin" type="MarginContainer" parent="."]
+[node name="MainMargin" type="MarginContainer" parent="." unique_id=1843609052]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -35,58 +37,86 @@ theme_override_constants/margin_top = 6
 theme_override_constants/margin_right = 6
 theme_override_constants/margin_bottom = 6
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MainMargin"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMargin" unique_id=2094541374]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MainMargin/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MainMargin/VBoxContainer" unique_id=1142011377]
 layout_mode = 2
+size_flags_vertical = 4
 
-[node name="OpenButton" type="Button" parent="MainMargin/VBoxContainer/HBoxContainer"]
+[node name="OpenButton" type="Button" parent="MainMargin/VBoxContainer/HBoxContainer" unique_id=1109657939]
 custom_minimum_size = Vector2(56, 0)
 layout_mode = 2
-text = "Files"
+size_flags_horizontal = 4
+size_flags_vertical = 4
+icon = ExtResource("2_xf4qy")
 
-[node name="VSeparator" type="VSeparator" parent="MainMargin/VBoxContainer/HBoxContainer"]
+[node name="VSeparator" type="VSeparator" parent="MainMargin/VBoxContainer/HBoxContainer" unique_id=644780260]
+visible = false
 layout_mode = 2
+size_flags_horizontal = 4
 
-[node name="Title" type="Label" parent="MainMargin/VBoxContainer/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMargin/VBoxContainer/HBoxContainer" unique_id=990697429]
 layout_mode = 2
 size_flags_horizontal = 3
-clip_text = true
-text = "Notes plugin - ideas"
-vertical_alignment = 1
+size_flags_vertical = 4
+theme_override_constants/separation = -7
 
-[node name="DeleteCurrentButton" type="Button" parent="MainMargin/VBoxContainer/HBoxContainer"]
+[node name="ProjName" type="Label" parent="MainMargin/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1710856662]
+custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
-tooltip_text = "Delete current note"
-theme_override_colors/font_color = Color(0.95281494, 0.58383155, 0.5847179, 1)
-text = "x"
-flat = true
+text = "Plugins development"
+horizontal_alignment = 1
+vertical_alignment = 2
+text_overrun_behavior = 5
 
-[node name="SaveButton" type="Button" parent="MainMargin/VBoxContainer/HBoxContainer"]
+[node name="Title" type="Label" parent="MainMargin/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=618960822]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "Welcome"
+horizontal_alignment = 1
+text_overrun_behavior = 5
+
+[node name="DeleteCurrentButton" type="Button" parent="MainMargin/VBoxContainer/HBoxContainer" unique_id=1919506739]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+tooltip_text = "Delete current note"
+theme_override_colors/font_color = Color(0.9, 0.3, 0.3, 1)
+theme_override_colors/font_pressed_color = Color(0.75, 0.2, 0.2, 1)
+theme_override_colors/font_hover_color = Color(1, 0.45, 0.45, 1)
+icon = ExtResource("2_ojsh0")
+flat = true
+icon_alignment = 1
+
+[node name="SaveButton" type="Button" parent="MainMargin/VBoxContainer/HBoxContainer" unique_id=342540673]
+visible = false
 custom_minimum_size = Vector2(56, 0)
 layout_mode = 2
+size_flags_vertical = 4
 text = "Save"
 
-[node name="HSeparator" type="HSeparator" parent="MainMargin/VBoxContainer"]
+[node name="HSeparator" type="HSeparator" parent="MainMargin/VBoxContainer" unique_id=647699889]
 layout_mode = 2
 
-[node name="TextEdit" type="TextEdit" parent="MainMargin/VBoxContainer"]
+[node name="TextEdit" type="TextEdit" parent="MainMargin/VBoxContainer" unique_id=1923935344]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-text = "New note file."
+text = "Welcome to the Notes plugin.
+Use these notes to track ideas, tasks, and project context in one place.
+"
 wrap_mode = 1
 
-[node name="FilePanel" type="Control" parent="."]
+[node name="FilePanel" type="Control" parent="." unique_id=73394694]
 visible = false
 layout_mode = 1
 anchors_preset = 9
 anchor_bottom = 1.0
-offset_right = 300.0
+offset_left = -864.0
 grow_vertical = 2
 
-[node name="ColorRect" type="PanelContainer" parent="FilePanel"]
+[node name="ColorRect" type="PanelContainer" parent="FilePanel" unique_id=1182984070]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -96,63 +126,63 @@ grow_vertical = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_side_panel")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="FilePanel/ColorRect"]
+[node name="VBoxContainer" type="VBoxContainer" parent="FilePanel/ColorRect" unique_id=1604189161]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="FilePanel/ColorRect/VBoxContainer"]
-layout_mode = 2
-theme_override_constants/margin_left = 6
-theme_override_constants/margin_top = 6
-theme_override_constants/margin_right = 6
-theme_override_constants/margin_bottom = 6
-
-[node name="Header" type="HBoxContainer" parent="FilePanel/ColorRect/VBoxContainer/MarginContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="FilePanel/ColorRect/VBoxContainer" unique_id=1057119313]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="FilePanel/ColorRect/VBoxContainer/MarginContainer/Header"]
+[node name="Header" type="HBoxContainer" parent="FilePanel/ColorRect/VBoxContainer/MarginContainer" unique_id=1428207]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="FilePanel/ColorRect/VBoxContainer/MarginContainer/Header" unique_id=333695128]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Notes Files"
+vertical_alignment = 1
 
-[node name="CloseButton" type="Button" parent="FilePanel/ColorRect/VBoxContainer/MarginContainer/Header"]
+[node name="CloseButton" type="Button" parent="FilePanel/ColorRect/VBoxContainer/MarginContainer/Header" unique_id=990053703]
 layout_mode = 2
-text = "Close"
+size_flags_horizontal = 4
+size_flags_vertical = 4
+icon = ExtResource("4_g0u4j")
 flat = true
 
-[node name="HSeparator" type="HSeparator" parent="FilePanel/ColorRect/VBoxContainer"]
+[node name="HSeparator" type="HSeparator" parent="FilePanel/ColorRect/VBoxContainer" unique_id=627350704]
 layout_mode = 2
 
-[node name="FileListScroll" type="ScrollContainer" parent="FilePanel/ColorRect/VBoxContainer"]
+[node name="FileListScroll" type="ScrollContainer" parent="FilePanel/ColorRect/VBoxContainer" unique_id=860944977]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="FileList" type="VBoxContainer" parent="FilePanel/ColorRect/VBoxContainer/FileListScroll"]
+[node name="FileList" type="VBoxContainer" parent="FilePanel/ColorRect/VBoxContainer/FileListScroll" unique_id=512032731]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="HSeparator2" type="HSeparator" parent="FilePanel/ColorRect/VBoxContainer"]
+[node name="HSeparator2" type="HSeparator" parent="FilePanel/ColorRect/VBoxContainer" unique_id=1592417321]
 layout_mode = 2
 
-[node name="MarginContainer2" type="MarginContainer" parent="FilePanel/ColorRect/VBoxContainer"]
+[node name="MarginContainer2" type="MarginContainer" parent="FilePanel/ColorRect/VBoxContainer" unique_id=552176605]
 layout_mode = 2
-theme_override_constants/margin_left = 6
-theme_override_constants/margin_top = 6
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_top = 3
 theme_override_constants/margin_right = 6
-theme_override_constants/margin_bottom = 6
+theme_override_constants/margin_bottom = 7
 
-[node name="VBoxContainer" type="VBoxContainer" parent="FilePanel/ColorRect/VBoxContainer/MarginContainer2"]
+[node name="VBoxContainer" type="VBoxContainer" parent="FilePanel/ColorRect/VBoxContainer/MarginContainer2" unique_id=462513978]
 layout_mode = 2
 
-[node name="NewFileName" type="LineEdit" parent="FilePanel/ColorRect/VBoxContainer/MarginContainer2/VBoxContainer"]
+[node name="NewFileName" type="LineEdit" parent="FilePanel/ColorRect/VBoxContainer/MarginContainer2/VBoxContainer" unique_id=936694250]
 layout_mode = 2
 placeholder_text = "New File Name"
 middle_mouse_paste_enabled = false
 
-[node name="CreateButton" type="Button" parent="FilePanel/ColorRect/VBoxContainer/MarginContainer2/VBoxContainer"]
+[node name="CreateButton" type="Button" parent="FilePanel/ColorRect/VBoxContainer/MarginContainer2/VBoxContainer" unique_id=1066857293]
 layout_mode = 2
+size_flags_vertical = 4
 text = "Create Note"
 
-[node name="ConfirmDelete" type="ConfirmationDialog" parent="."]
+[node name="ConfirmDelete" type="ConfirmationDialog" parent="." unique_id=1927351273]
 ok_button_text = "Delete"
 dialog_text = "Delete this note?"
 
