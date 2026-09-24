@@ -23,11 +23,11 @@ A simple docked notes plugin for Godot that helps you keep project notes, todos,
 
 Notes are stored here:
 
-`res://addons/Notes-Plugin/files/`
+`res://addons/Notes/files/`
 
 The plugin also keeps an internal ordering file:
 
-`res://addons/Notes-Plugin/files/.notes_order`
+`res://addons/Notes/files/.notes_order`
 
 ## Installation
 
@@ -60,8 +60,3 @@ The plugin can include starter files like:
 - `Ideas.txt`
 
 If `Welcome.txt` exists, it is opened first on startup.
-
-## Known Notes
-
-- This plugin is designed for Godot 4.5 (`@tool` scripts).
-- If the editor caches older script state after updates, disable/re-enable the plugin once.
